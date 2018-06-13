@@ -1,0 +1,9 @@
+mixin loginForm()
+    form(action=`/login` method="POST" class="ui form container")
+        .field
+            label(for="email") E-mail
+            input(type="email" name="email")
+        .field
+            label(for="password") Пароль
+            input(type="password" name="password")
+        input(type="submit" value="Войти" class="ui button")

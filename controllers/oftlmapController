@@ -1,0 +1,30 @@
+const mongoose = require('mongoose');
+require('../models/Site');
+const Site = mongoose.model('Site');
+
+exports.oftlmapPage = (req, res, next) => {
+    res.render('allMap', {title: 'Карта'});
+};
+
+exports.createSite = (req, res) => {
+    res.render('editSite', {title: 'Добавить сайт'});
+};
+
+exports.saveSite = async (req, res) => {
+    req.body.author = req.user._id;
+    const site = await (new Site(req.body)).save();
+    req.flash('saved', `Площадка <strong>${site.name}</strong> успешно создана.`);
+    res.redirect(`/site/${site.slug}`);
+};
+
+exports.mapPage = async (req, res) => {
+    res.render('map', {title: 'Карта ближайших объектов с задачами'});
+};
+
+exports.mapTodoPage = async (req, res) => {
+    res.render('todomap', {title: 'Карта объектов с задачами'});
+};
+
+exports.mapTodoPage = async (req, res) => {
+    res.render('todomap', {title: 'Карта объектов с приоритетными задачами'});
+};

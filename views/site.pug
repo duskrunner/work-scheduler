@@ -1,0 +1,22 @@
+extends layout
+
+include mixins/_todoForm
+include mixins/_todo
+
+block content
+    .ui.container
+        h1= site.name
+        a(href=`/oftl-map/map?lat=${site.location.coordinates[1]}&lng=${site.location.coordinates[0]}`)
+            img(src=h.staticMap(site.location.coordinates))
+        .ui.segment
+            p <strong>Адрес:</strong> #{site.location.address}
+        .ui.segment
+            p <strong>Описание:</strong>
+            p!= site.description
+        if(site.todos)
+            .ui.big.comments(style="max-width: 100%")
+                h2.ui.dividing.header Задачи
+                each todo in site.todos
+                    +todo(todo)
+        if(user)
+            +todoForm(site)

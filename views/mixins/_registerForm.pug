@@ -1,0 +1,18 @@
+mixin registerForm()
+    form(action=`/register` method="POST" class="ui form container")
+        .field
+            label(for="name") ФИО
+            input(type="text" name="name")
+        .field
+            label(for="email") E-mail
+            input(type="email" name="email")
+        .field
+            label(for="password") Пароль
+            input(type="password" name="password")
+        .field
+            label(for="confirm-password") Подтвердить пароль
+            input(type="password" name="confirm-password")
+        input(type="submit" value="Войти" class="ui button")
+
+
+

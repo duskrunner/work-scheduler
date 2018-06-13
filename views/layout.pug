@@ -1,0 +1,50 @@
+doctype html
+html
+  head
+    title= `${title} | MSN`
+    link(rel='stylesheet', type="text/css", href='/semantic/dist/semantic.min.css')
+    link(rel='stylesheet', type="text/css", href='/stylesheets/style.css')
+    script(src="https://code.jquery.com/jquery-3.2.1.min.js")
+    script(src='/semantic/dist/semantic.min.js')
+  body
+
+    block header
+      header.ui.pointing.menu.grid
+        each item in h.menu
+          a.item(href=item.slug, class=(currentPath.startsWith(item.slug) ? 'item active' : ''))  #{item.title}
+        .ui.search.item
+          .ui.icon.input
+            input.prompt(type="text" name="search" placeholder="Искать площадку")
+            i.search.icon
+          .results
+        .right.menu
+          if user
+            //a.item(href="#", class=(currentPath.startsWith("#") ? 'item active' : ''))  Мои задачи
+            a.item(href=`/todo/todos/user/${user._id}` class=(currentPath.startsWith("/todo/todos/user/") ? 'item active' : ''))= user.name
+            a.item(href="/logout", class=(currentPath.startsWith("/logout") ? 'item active' : ''))  Выйти
+          else
+            a.item(href="/register", class=(currentPath.startsWith("/register") ? 'item active' : ''))  Регистрация
+            a.item(href="/login", class=(currentPath.startsWith("/login") ? 'item active' : ''))  Войти
+
+    block header2
+    block messages
+      if locals.flashes
+        - const categories = Object.keys(locals.flashes)
+        each category in categories
+          each message in flashes[category]
+            if category !== "error"
+              .ui.icon.message.container
+                i(onClick="this.parentElement.remove()" class="close icon")
+                if category === "saved"
+                  i(class="save icon")
+                header!= message
+            else
+              .ui.warning.message.container
+                i(onClick="this.parentElement.remove()" class="close icon")
+                .header!= message
+    block content
+    block scripts
+      script(src=`https://maps.googleapis.com/maps/api/js?key=${process.env.GOOGLE_API_KEY}&libraries=places`)
+      script(src='/dist/jquery.tablesorter.min.js')
+      script(src='/dist/bundle.js')
+      script $(document).ready(function(){$(".tablesorter").tablesorter();});

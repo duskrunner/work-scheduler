@@ -1,0 +1,6 @@
+variables.env
+node_modules/
+.idea
+public/dist/
+public/images/
+public/semantic/

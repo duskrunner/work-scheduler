@@ -1,0 +1,18 @@
+mixin todoForm(site)
+    form.ui.form(action=`/todo/${site._id}` method="POST")
+        .field
+            lable
+                h3 Запланировать выезд
+            textarea(name="text")
+        .field
+            input(type="checkbox" id="priority" name="priority" value=1)
+            lable(for="priority") Высокий приоритет
+        .field
+            - const groups = ['ПТО-1', 'ПТО-2', 'ПТО-6', 'ПТО-7', 'ПТО-8', 'Авария', 'MBH', 'SDH', 'ВОЛС', 'DWDM', 'TE', 'Ожидание', 'Не срочно']
+            ul.ui.horizonatal.list
+                each group in groups
+                    span.checkbox
+                        input(type="checkbox" id=group name="groups" value=group)
+                        lable(for=group)= group
+        .field
+            input(type="submit" value="Создать" class="ui button green" style="float:right")

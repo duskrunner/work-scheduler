@@ -1,0 +1,52 @@
+mixin todo(todo)
+    .comment
+        .content
+            if user && (todo.author.equals(user._id) || user.level >= 20)
+                a(href=`/todo/${todo._id}/edit`)
+                    button.right.floated.ui.icon.button
+                        i.edit.icon
+            .author= todo.author.name
+            .metadata
+                span.date= h.moment(todo.created).locale('ru').format('LLL')
+                if todo.priority === 1
+                    i.warning.sign.icon(style="color: red;")
+            .text= todo.text
+            each group in todo.groups
+                if group === 'ПТО-1'
+                    .ui.brown.label
+                        = group
+                else if group === 'ПТО-2'
+                    .ui.brown.label
+                        = group
+                else if group === 'ПТО-6'
+                    .ui.brown.label
+                        = group
+                else if group === 'ПТО-7'
+                    .ui.brown.label
+                        = group
+                else if group === 'ПТО-8'
+                    .ui.brown.label
+                        = group
+                else if group === 'Авария'
+                    .ui.red.label
+                        = group
+                else if group === 'MBH'
+                    .ui.pink.label
+                        = group
+                else if group === 'SDH'
+                    .ui.orange.label
+                        = group
+                else if group === 'DWDM'
+                    .ui.orange.label
+                        = group
+                else if group === 'ВОЛС'
+                    .ui.yellow.label
+                        = group
+                else
+                    .ui.label
+                        = group
+            if user && (todo.author.equals(user._id) || user.level >= 20)
+                .extra.content
+                    .ui.two.buttons
+                        .ui.basic.green.button(onclick=`if (confirm('Задача выполнена?')) window.location.href='/todo/${todo._id}/delete?status=Выполнена&closedBy=${user._id}'`) Выполнена
+                        .ui.basic.red.button(onclick=`if (confirm('Задача выполнена?')) window.location.href='/todo/${todo._id}/delete?status=Отменена&closedBy=${user._id}'`) Отменена

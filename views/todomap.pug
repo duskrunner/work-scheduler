@@ -1,0 +1,17 @@
+extends innerLayout
+block content
+    input(id="pac-input" class="controls" type="text" placeholder="Search Box")
+    if(currentPath.endsWith('oftl-map/todo') || currentPath.endsWith('oftl-map/todo/'))
+        .two.buttons
+            .ui.blue.basic.button Все
+            a(href='/oftl-map/todo/priority')
+                .ui.grey.basic.button Приоритетные
+    if(currentPath.endsWith('oftl-map/todo/priority') || currentPath.endsWith('oftl-map/todo/priority/'))
+        .two.buttons
+            a(href='/oftl-map/todo')
+                .ui.grey.basic.button Все
+            .ui.red.basic.button Приоритетные
+    if(currentPath.endsWith('oftl-map/todo') || currentPath.endsWith('oftl-map/todo/'))
+        .ui.embed#todomap
+    if(currentPath.endsWith('oftl-map/todo/priority') || currentPath.endsWith('oftl-map/todo/priority/'))
+        .ui.embed#prioritytodomap

@@ -1,0 +1,13 @@
+extends layout
+
+block header2
+    if currentPath.startsWith('/oftl-map')
+        header.ui.secondary.pointing.menu.responsive.grid
+            each item in h.oftlMenu
+                a.item(href=item.slug, class=(currentPath.startsWith(item.slug) ? 'item active' : '')) #{item.title}
+    else if currentPath.startsWith('/sites')
+        header.ui.secondary.pointing.menu.responsive.grid
+            each item in h.sitesMenu
+                 a.item(href=item.slug, class=(currentPath.endsWith(item.slug) ? 'item active' : '')) #{item.title}
+
+block content

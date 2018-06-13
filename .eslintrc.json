@@ -1,0 +1,12 @@
+{
+
+    "extends": "google",
+    "parserOptions": {
+        "ecmaVersion": 2017,
+        "comma-dangle": ["error", "never"],
+        "max-len": {"code": 120}
+    },
+    "rules": {
+        "max-len": ["error", 120]
+    }
+}

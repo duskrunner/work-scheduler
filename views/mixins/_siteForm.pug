@@ -1,0 +1,19 @@
+mixin siteForm(site = {})
+    form(action=`/sites/create-site/${site._id || ''}` method="POST" class="ui form container")
+        .field
+            label(for="name") Номер площадки
+            input(type="text" name="name" value=site.name)
+        .field
+            label(for="description") Описание
+            textarea(name="description")=site.description
+        .field
+            label(for="address") Адрес
+            input(type="text" id="address" name="location.address" value=(site.location && site.location.address))
+        .two.fields
+            .field
+                label(for="lng") Долгота
+                input(type="text" id="lng" name="location.coordinates.0" value=(site.location && site.location.coordinates[0]) required)
+            .field
+                label(for="lat") Широта
+                input(type="text" id="lat" name="location.coordinates.1" value=(site.location && site.location.coordinates[1]) required)
+        input(type="submit" value="Сохранить" class="ui button")
