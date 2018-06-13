@@ -1,4 +1,5 @@
 import axios from 'axios';
+import moment from 'moment'
 
 const mapOptions = {
     center: {lat: 59.9594691, lng: 30.3235418},
@@ -108,11 +109,15 @@ function  loadPlaces(map, api, lat = 59.9594691, lng = 30.3235418) {
                         });
                         if(todo.priority === 1){
                             todosHTML = todosHTML + `<hr>                            
-                            <p><i class="warning sign icon" style="color: red;"></i>${todo.text}</p> <p>Автор: ${todo.author.name}</p>` + groupsHTML
+                            <p><i class="warning sign icon" style="color: red;"></i>${todo.text}</p> <p>Автор: ${todo.author.name}</p>`
                         } else {
                             todosHTML = todosHTML + `<hr>                            
-                            <p><b>${todo.text}</b></p> <p>Автор: ${todo.author.name}</p>` + groupsHTML
+                            <p><b>${todo.text}</b></p> <p>Автор: ${todo.author.name}</p>`
                         }
+                        if(todo.scheduled_date) {
+                            todosHTML = todosHTML + `<p>План на: ${moment(todo.scheduled_date).locale('ru').format('LL')}</p>`
+                        }
+                        todosHTML = todosHTML + groupsHTML;
                         groupsHTML = ``;
                     });
                     const html = `

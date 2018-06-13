@@ -6,6 +6,12 @@ block content
             lable
                 h3!= `Изменить задачу на ${todo.site.name}`
             textarea(name="text")!= todo.text
+        .four.fields
+            .field
+                .ui.calendar#cal
+                    .ui.input.left.icon
+                        i.calendar.icon
+                        input(type="text" placeholder="Дата (если известна)" id="scheduled_date" name="scheduled_date" value=`${todo.scheduled_date ? h.moment(todo.scheduled_date).format('L') : ''}`)
         .field
             input(type="checkbox" id="priority" name="priority" value=1 checked=todo.priority ? true : false)
             lable(for="priority") Высокий приоритет
@@ -18,3 +24,38 @@ block content
                         lable(for=group)= group
         .field
             input(type="submit" value="Сохранить изменения" class="ui button green" style="float:right")
+block scripts
+    script(src='/dist/bundle.js')
+    script(src='/dist/calendar.js')
+    script.
+        $(document).ready(function () {
+            $('#cal').calendar({
+                type: 'date',
+                firstDayOfWeek: 1,
+                monthFirst: false, text: {
+                    days: ['В', 'По', 'В', 'Ср', 'Ч', 'Пя', 'Су'],
+                    months: ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь'],
+                    monthsShort: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'],
+                    today: 'Сегодня', now: 'Сейчас', am: 'AM', pm: 'PM'
+                },
+                formatter: {
+                    date: function (date, settings) {
+                        if (!date) return '';
+                        console.log(date)
+                        var day = date.getDate() + '';
+                        console.log(day)
+                        if (day.length < 2) {
+                            day = '0' + day;
+                        }
+                        var month = (date.getMonth() + 1) + '';
+                        console.log(month)
+                        if (month.length < 2) {
+                            month = '0' + month;
+                        }
+                        var year = date.getFullYear();
+                        console.log(year)
+                        return year + '/' + month + '/' + day;
+                    }
+                }
+            });
+        });

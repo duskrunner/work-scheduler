@@ -23,6 +23,7 @@ const todoSchema = new mongoose.Schema({
         min: 0,
         max: 1,
     },
+    scheduled_date: Date,
     groups: [String],
 });
 

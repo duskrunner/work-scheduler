@@ -8,6 +8,7 @@ exports.addToDo = async (req, res) => {
     if (!req.body.priority) {
         req.body.priority = '0';
     }
+    console.log(req.body);
     const newTodo = new Todo(req.body);
     req.body._id = newTodo._id;
     const newTodoHistory = new TodoHistory(req.body);
@@ -56,7 +57,7 @@ exports.getTodoByUser = async (req, res) => {
 };
 
 const confirmOwner = (todo, user) => {
-    if (!todo.author.equals(user._id) || todo.author.level < 20) {
+    if (!todo.author.equals(user._id) && todo.author.level < 20) {
         throw Error('Не ты создавал, не тебе и редактировать.');
     }
 };

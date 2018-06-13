@@ -28,6 +28,7 @@ const todoHistorySchema = new mongoose.Schema({
         default: 'Запланирована',
     },
     groups: [String],
+    scheduled_date: Date,
     closedBy: {
         type: mongoose.Schema.ObjectId,
         ref: 'User',

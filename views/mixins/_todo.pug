@@ -11,6 +11,11 @@ mixin todo(todo)
                 if todo.priority === 1
                     i.warning.sign.icon(style="color: red;")
             .text= todo.text
+            if(todo.scheduled_date)
+                .metadata
+                    p
+                        strong Запланирована на:
+                        span.date= h.moment(todo.scheduled_date).locale('ru').format('LL')
             each group in todo.groups
                 if group === 'ПТО-1'
                     .ui.brown.label

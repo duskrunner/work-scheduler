@@ -116,6 +116,7 @@ block content
                 th.three.wide Адрес
                 th Задача
                 th.two.wide Группа
+                th.one.wide План
                 th.one.wide Автор
                 th.one.wide Действие
                 th(style="width:1px")
@@ -173,6 +174,12 @@ block content
                             else
                                 .ui.label(style="margin: 3px")
                                     = group
+                    td.one.wide
+                        if(todo.scheduled_date && todo.scheduled_date <= Date.now())
+                             div(style="color:red")
+                                 =h.moment(todo.scheduled_date).locale('ru').format('LL')
+                        if(todo.scheduled_date && todo.scheduled_date > Date.now())
+                                =h.moment(todo.scheduled_date).locale('ru').format('LL')
                     td= todo.author.name
                     td.one.wide
                         if user && (todo.author.equals(user._id) || user.level >= 20)

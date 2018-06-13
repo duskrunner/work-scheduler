@@ -4,6 +4,12 @@ mixin todoForm(site)
             lable
                 h3 Запланировать выезд
             textarea(name="text")
+        .four.fields
+            .field
+                .ui.calendar#cal
+                    .ui.input.left.icon
+                        i.calendar.icon
+                        input(type="text" placeholder="Дата (если известна)" id="scheduled_date" name="scheduled_date")
         .field
             input(type="checkbox" id="priority" name="priority" value=1)
             lable(for="priority") Высокий приоритет
