@@ -53,7 +53,7 @@ exports.getTodoByUser = async (req, res) => {
     const groups = await Todo.getGroupList();
     const todos = await Todo.find({author: user}).populate('author site');
     if (!todos) return next();
-    res.render('todos', {title: `Задачи - ${todos[0].author.name}`, todos, groups});
+    res.render('todos', {title: `Задачи - ${todos[0] ? todos[0].author.name : 'Бездельника'}`, todos, groups});
 };
 
 const confirmOwner = (todo, user) => {

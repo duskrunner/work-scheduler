@@ -8,7 +8,6 @@ const app = require('../app');
 const debug = require('debug')('msn-exp:server');
 const http = require('http');
 require('dotenv').config({path: '../variables.env'});
-console.log(process.env)
 const mongoose = require('mongoose');
 mongoose.connect(process.env.DATABASE);
 mongoose.Promise = global.Promise;
