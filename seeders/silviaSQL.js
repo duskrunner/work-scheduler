@@ -34,6 +34,7 @@ exports.syncWithSylvia = async () => {
                 site.inner_info = row.inner_info;
                 site.reception_info = row.reception_info;
                 site.ams_info = row.ams_info;
+                site.contacts = [];
                 await con.query(`SELECT * FROM bts_contacts_rel WHERE bts_number=${row.bts_number};`, (err, rows) => {
                     if (err) throw err;
                     rows.forEach(async (row) => {
