@@ -13,6 +13,23 @@ const siteSchema = new mongoose.Schema({
         type: String,
         trim: true,
     },
+    way_info: {
+        type: String,
+        trim: true,
+    },
+    inner_info: {
+        type: String,
+        trim: true,
+    },
+    reception_info: {
+        type: String,
+        trim: true,
+    },
+    ams_info: {
+        type: String,
+        trim: true,
+    },
+    contacts: [mongoose.Schema.Types.Mixed],
     location: {
         type: {
             type: String,
@@ -41,7 +58,7 @@ const siteSchema = new mongoose.Schema({
 siteSchema.index({name: 'text'});
 siteSchema.index({location: '2dsphere'});
 
-siteSchema.pre('save', async function(next) {
+siteSchema.pre('save', async function (next) {
     if (!this.isModified('name')) {
         next();
         return;

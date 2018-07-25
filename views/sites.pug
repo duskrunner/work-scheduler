@@ -5,7 +5,9 @@ block content
         thead
             tr
                 th.one.wide № площадки
-                th Описание
+                th Проезд к объекту
+                th На проходной
+                th Проход внутри здания
                 th.three.wide Адрес
                 th(style="width:1px")
         tbody
@@ -13,7 +15,9 @@ block content
                 tr
                     td.one.wide
                         a(href=`/site/${site.slug}`)= site.name
-                    td!= site.description
+                    td!= site.way_info
+                    td!= site.inner_info
+                    td!= site.reception_info
                     td= site.location.address
                     td(style="width:1px")
                         if user && site.author.equals(user._id)

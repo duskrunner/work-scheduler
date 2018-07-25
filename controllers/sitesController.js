@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 require('../models/Site');
 const Site = mongoose.model('Site');
+const mysql = require('mysql');
 
 exports.sitesPage = async (req, res, next) => {
     const sites = await Site.find();

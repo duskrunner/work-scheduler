@@ -10,6 +10,8 @@ const MongoStore = require('connect-mongo')(session);
 const passport = require('passport');
 const mongoose = require('mongoose');
 const expressValidator = require('express-validator');
+const {syncWithSylvia} = require('./seeders/silviaSQL');
+const schedule = require('node-schedule');
 
 require('./models/User');
 require('./models/Todo');
@@ -34,6 +36,8 @@ const todo = require('./routes/todo');
 
 const app = express();
 
+
+schedule.scheduleJob('30 8 * * *', syncWithSylvia);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');

@@ -12,8 +12,38 @@ block content
         .ui.segment
             p <strong>Адрес:</strong> #{site.location.address}
         .ui.segment
-            p <strong>Описание:</strong>
-            p!= site.description
+            a(href=`http://10.16.3.8/red/Sylvia/findresult.php?btsnum=${site.slug.replace('-', '')}`)
+                button.right.floated.ui.icon.button.red
+                    i.edit.icon
+            p
+                strong Проезд к объекту:
+                != site.way_info
+            p
+                strong На проходной:
+                != site.reception_info
+            p
+                strong Проход внутри здания:
+                != site.inner_info
+            p
+                strong Проход к антеннам:
+                != site.ams_info
+        if(site.contacts[0])
+            table.ui.celled.table
+                thead
+                    tr
+                        th Тема
+                        th ФИО
+                        th Должность
+                        th Контакты
+                        th Комментарий
+                tbody
+                    each contact in site.contacts
+                        tr
+                            td!= contact.theme
+                            td!= contact.name
+                            td!= contact.doljnost
+                            td!= contact.contacts
+                            td!= contact.comment
         if(site.todos)
             .ui.big.comments(style="max-width: 100%")
                 h2.ui.dividing.header Задачи

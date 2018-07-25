@@ -11,10 +11,10 @@ mongoose.connection.on('error', (err) => {
 });
 
 const con = mysql.createConnection({
-    host: '10.16.7.167',
-    user: 'selin',
-    password: 'dukalis',
-    database: 'ets',
+    host: process.env.ETS_HOST,
+    user: process.env.ETS_USER,
+    password: process.env.ETS_PASS,
+    database: process.env.ETS_DB,
 });
 
 con.connect((err) => {
