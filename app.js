@@ -37,7 +37,7 @@ const todo = require('./routes/todo');
 const app = express();
 
 
-schedule.scheduleJob('30 8 * * *', syncWithSylvia);
+schedule.scheduleJob('50 7 * * *', syncWithSylvia);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
