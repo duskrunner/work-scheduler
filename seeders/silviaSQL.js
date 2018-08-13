@@ -50,7 +50,6 @@ exports.syncWithSylvia = async () => {
             }
         });
     });
-    con.end();
 };
 
 
