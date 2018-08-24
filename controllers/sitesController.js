@@ -9,8 +9,8 @@ exports.sitesPage = async (req, res, next) => {
 };
 
 const confirmOwner = (site, user) => {
-    if (!site.author.equals(user._id)) {
-        throw Error('Не ты создавал, не тебе и редактировать.');
+    if (!user.level >= 20) {
+        throw Error('Недостаточно прав.');
     }
 };
 

@@ -25,8 +25,8 @@ exports.todoMenu = [
 exports.sitesMenu = [
     {slug: '/sites',
         title: 'Список сайтов'},
-    // {slug: '/sites/create-site',
-    //     title: 'Создать новый элемент'},
+    {slug: '/sites/create-site',
+        title: 'Создать новый элемент'},
 ];
 
 exports.moment = require('moment');

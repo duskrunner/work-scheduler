@@ -20,7 +20,7 @@ block content
                     td!= site.reception_info
                     td= site.location.address
                     td(style="width:1px")
-                        if user && site.author.equals(user._id)
+                        if user && (user.level >= 30)
                             a(href=`/sites/${site._id}/edit`)
                                 button.ui.icon.button
                                     i.edit.icon
