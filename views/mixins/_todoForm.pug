@@ -13,12 +13,20 @@ mixin todoForm(site)
         .field
             input(type="checkbox" id="priority" name="priority" value=1)
             lable(for="priority") Высокий приоритет
+        - const groups = ['ПТО-1', 'ПТО-2', 'ПТО-3', 'ПТО-4', 'ПТО-5', 'ПТО-6', 'ПТО-7', 'ПТО-8', 'ПТО-9', 'ПТО-10', 'ПТО-11', 'ПТО-12', 'Авария', 'MBH', 'SDH', 'ВОЛС', 'DWDM', 'TE', 'Ожидание', 'Не срочно']
         .field
-            - const groups = ['ПТО-1', 'ПТО-2', 'ПТО-6', 'ПТО-7', 'ПТО-8', 'Авария', 'MBH', 'SDH', 'ВОЛС', 'DWDM', 'TE', 'Ожидание', 'Не срочно']
             ul.ui.horizonatal.list
                 each group in groups
-                    span.checkbox
-                        input(type="checkbox" id=group name="groups" value=group)
-                        lable(for=group)= group
+                    if group.startsWith('ПТО')
+                        span.checkbox
+                            input(type="checkbox" id=group name="groups" value=group)
+                            lable(for=group)= group
+        .field
+            ul.ui.horizonatal.list
+                each group in groups
+                    if !group.startsWith('ПТО')
+                        span.checkbox
+                            input(type="checkbox" id=group name="groups" value=group)
+                            lable(for=group)= group
         .field
             input(type="submit" value="Создать" class="ui button green" style="float:right")

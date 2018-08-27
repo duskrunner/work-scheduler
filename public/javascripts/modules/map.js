@@ -35,6 +35,18 @@ function  loadPlaces(map, api, lat = 59.9594691, lng = 30.3235418) {
                         icon = {
                             url: "../../images/pto2.png",
                         };
+                    } else if(todo.groups.includes('ПТО-3')) {
+                        icon = {
+                            url: "../../images/pto3.png",
+                        };
+                    } else if(todo.groups.includes('ПТО-4')) {
+                        icon = {
+                            url: "../../images/pto4.png",
+                        };
+                    } else if(todo.groups.includes('ПТО-5')) {
+                        icon = {
+                            url: "../../images/pto5.png",
+                        };
                     } else if(todo.groups.includes('ПТО-6')) {
                         icon = {
                             url: "../../images/pto6.png",
@@ -46,6 +58,22 @@ function  loadPlaces(map, api, lat = 59.9594691, lng = 30.3235418) {
                     } else if(todo.groups.includes('ПТО-8')) {
                         icon = {
                             url: "../../images/pto8.png",
+                        };
+                    } else if(todo.groups.includes('ПТО-9')) {
+                        icon = {
+                            url: "../../images/pto9.png",
+                        };
+                    } else if(todo.groups.includes('ПТО-10')) {
+                        icon = {
+                            url: "../../images/pto10.png",
+                        };
+                    } else if(todo.groups.includes('ПТО-11')) {
+                        icon = {
+                            url: "../../images/pto11.png",
+                        };
+                    } else if(todo.groups.includes('ПТО-12')) {
+                        icon = {
+                            url: "../../images/pto12.png",
                         };
                     } else if(todo.groups.includes('DWDM')) {
                         icon = {
@@ -87,7 +115,7 @@ function  loadPlaces(map, api, lat = 59.9594691, lng = 30.3235418) {
                     let groupsHTML = ``;
                     this.site.todos.forEach((todo) => {
                         todo.groups.forEach((group) => {
-                            if (group === 'ПТО-1' || group === 'ПТО-2' || group === 'ПТО-6' || group === 'ПТО-7' || group === 'ПТО-8' ) {
+                            if (group.startsWith('ПТО')) {
                             groupsHTML = groupsHTML + `<div class = "ui brown label">${group}</div>`
                             } else if (group === 'Авария') {
                                 groupsHTML = groupsHTML + `<div class = "ui red label">${group}</div>`

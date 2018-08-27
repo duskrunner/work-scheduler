@@ -17,19 +17,7 @@ mixin todo(todo)
                         strong Запланирована на:
                         span.date= h.moment(todo.scheduled_date).locale('ru').format('LL')
             each group in todo.groups
-                if group === 'ПТО-1'
-                    .ui.brown.label
-                        = group
-                else if group === 'ПТО-2'
-                    .ui.brown.label
-                        = group
-                else if group === 'ПТО-6'
-                    .ui.brown.label
-                        = group
-                else if group === 'ПТО-7'
-                    .ui.brown.label
-                        = group
-                else if group === 'ПТО-8'
+                if group.startsWith('ПТО')
                     .ui.brown.label
                         = group
                 else if group === 'Авария'
