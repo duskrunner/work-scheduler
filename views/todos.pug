@@ -16,79 +16,7 @@ block content
                 .ui.grey.basic.button Приоритетные
     ul
         each group in groups
-            if group._id === 'ПТО'
-                .ui.labeled.button
-                    a.ui.brown.button(href=`/todo/todos/${group._id}`)
-                        = group._id
-                    .ui.basic.brown.left.pointing.label
-                        = group.count
-            else if group._id === 'ПТО-1'
-                .ui.labeled.button
-                    a.ui.brown.button(href=`/todo/todos/${group._id}`)
-                        = group._id
-                    .ui.basic.brown.left.pointing.label
-                        = group.count
-            else if group._id === 'ПТО-2'
-                .ui.labeled.button
-                    a.ui.brown.button(href=`/todo/todos/${group._id}`)
-                        = group._id
-                    .ui.basic.brown.left.pointing.label
-                        = group.count
-            else if group._id === 'ПТО-3'
-                .ui.labeled.button
-                    a.ui.brown.button(href=`/todo/todos/${group._id}`)
-                        = group._id
-                    .ui.basic.brown.left.pointing.label
-                        = group.count
-            else if group._id === 'ПТО-4'
-                .ui.labeled.button
-                    a.ui.brown.button(href=`/todo/todos/${group._id}`)
-                        = group._id
-                    .ui.basic.brown.left.pointing.label
-                        = group.count
-            else if group._id === 'ПТО-5'
-                .ui.labeled.button
-                    a.ui.brown.button(href=`/todo/todos/${group._id}`)
-                        = group._id
-                    .ui.basic.brown.left.pointing.label
-                        = group.count
-            else if group._id === 'ПТО-6'
-                .ui.labeled.button
-                    a.ui.brown.button(href=`/todo/todos/${group._id}`)
-                        = group._id
-                    .ui.basic.brown.left.pointing.label
-                        = group.count
-            else if group._id === 'ПТО-7'
-                .ui.labeled.button
-                    a.ui.brown.button(href=`/todo/todos/${group._id}`)
-                        = group._id
-                    .ui.basic.brown.left.pointing.label
-                        = group.count
-            else if group._id === 'ПТО-8'
-                .ui.labeled.button
-                    a.ui.brown.button(href=`/todo/todos/${group._id}`)
-                        = group._id
-                    .ui.basic.brown.left.pointing.label
-                        = group.count
-            else if group._id === 'ПТО-9'
-                .ui.labeled.button
-                    a.ui.brown.button(href=`/todo/todos/${group._id}`)
-                        = group._id
-                    .ui.basic.brown.left.pointing.label
-                        = group.count
-            else if group._id === 'ПТО-10'
-                .ui.labeled.button
-                    a.ui.brown.button(href=`/todo/todos/${group._id}`)
-                        = group._id
-                    .ui.basic.brown.left.pointing.label
-                        = group.count
-            else if group._id === 'ПТО-11'
-                .ui.labeled.button
-                    a.ui.brown.button(href=`/todo/todos/${group._id}`)
-                        = group._id
-                    .ui.basic.brown.left.pointing.label
-                        = group.count
-            else if group._id === 'ПТО-12'
+            if group._id.startsWith('ПТО')
                 .ui.labeled.button
                     a.ui.brown.button(href=`/todo/todos/${group._id}`)
                         = group._id
@@ -174,19 +102,7 @@ block content
                         =todo.text
                     td
                         each group in todo.groups
-                            if group === 'ПТО-1'
-                                .ui.brown.label(style="margin: 3px")
-                                    = group
-                            else if group === 'ПТО-2'
-                                .ui.brown.label(style="margin: 3px")
-                                    = group
-                            else if group === 'ПТО-6'
-                                .ui.brown.label(style="margin: 3px")
-                                    = group
-                            else if group === 'ПТО-7'
-                                .ui.brown.label(style="margin: 3px")
-                                    = group
-                            else if group === 'ПТО-8'
+                            if group.startsWith('ПТО')
                                 .ui.brown.label(style="margin: 3px")
                                     = group
                             else if group === 'Авария'
